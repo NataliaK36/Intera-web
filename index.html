@@ -1,150 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+<head>    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intera | Master Your Social Confidence</title>
+    <title>Intera | Step out of your comfort zone</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter pre moderný vzhľad -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Tieto farby zodpovedajú Material3 Primary scheme, ktorú máš v appke
+                        primary: '#6750A4', 
+                        primaryContainer: '#EADDFF',
+                        onSurfaceVariant: '#49454F',
+                        surface: '#FEF7FF'
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
     <style>
-        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
-        .hero-gradient { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); }
+        .m3-card { border-radius: 28px; transition: all 0.3s ease; }
+        .m3-button { border-radius: 100px; }
+        .app-gradient { background: linear-gradient(180deg, #FDF7FF 0%, #EADDFF 100%); }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans leading-relaxed">
+<body class="bg-surface text-slate-900 font-sans">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass border-b border-slate-200">
+    <!-- Navigation (Zladená s tvojím BottomBar) -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <!-- Replace with your actual logo img -->
-                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg">
-                    <i class="fas fa-brain text-xl"></i>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary text-white m3-card flex items-center justify-center shadow-lg">
+                    <i class="fas fa-brain text-lg"></i>
                 </div>
-                <span class="text-2xl font-bold tracking-tight text-slate-800">Intera</span>
+                <span class="text-2xl font-extrabold tracking-tight text-primary">Intera</span>
             </div>
-            <div class="hidden md:flex gap-8 font-medium text-slate-600">
-                <a href="#features" class="hover:text-indigo-600 transition">Features</a>
-                <a href="#how-it-works" class="hover:text-indigo-600 transition">How it Works</a>
-                <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+            <div class="hidden md:flex gap-8 font-semibold text-onSurfaceVariant">
+                <a href="#features" class="hover:text-primary transition">Quests</a>
+                <a href="#diary" class="hover:text-primary transition">Diary</a>
+                <a href="#contact" class="hover:text-primary transition">Contact</a>
             </div>
-            <a href="#download" class="bg-indigo-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-indigo-700 transition shadow-md shadow-indigo-200">
-                Download
+            <a href="#download" class="bg-primary text-white px-7 py-3 m3-button font-bold hover:opacity-90 transition shadow-md">
+                Get App
             </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="pt-32 pb-20 px-6 hero-gradient text-white">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+    <!-- Hero Section (Edge-to-edge look ako tvoj Scaffold) -->
+    <header class="pt-32 pb-20 px-6 app-gradient">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
             <div class="flex-1 text-center md:text-left">
-                <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
-                    Social interactions <br><span class="text-indigo-200">without the anxiety.</span>
+                <span class="bg-primaryContainer text-primary px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">
+                    Social Anxiety Assistant
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold mt-6 mb-6 leading-tight text-slate-900">
+                    Master social <br><span class="text-primary">interactions.</span>
                 </h1>
-                <p class="text-xl text-indigo-100 mb-10 max-w-xl">
-                    Intera is your personal companion for building social confidence. Through evidence-based quests and reflection, we help you navigate the world with ease.
+                <p class="text-lg text-onSurfaceVariant mb-10 max-w-xl">
+                    Intera uses evidence-based social quests to help you build confidence. 
+                    From simple "Hellos" to meaningful conversations.
                 </p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-4" id="download">
-                    <!-- Standard Store Badges -->
-                    <a href="#" class="transition hover:scale-105">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="h-14">
+                
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="#" class="hover:scale-105 transition">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" class="h-14">
                     </a>
-                    <a href="#" class="transition hover:scale-105">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store" class="h-14">
-                    </a>
+                    <div class="p-4 bg-white m3-card border border-primaryContainer flex items-center gap-3">
+                        <i class="fab fa-windows text-primary text-2xl"></i>
+                        <span class="text-xs font-semibold uppercase">Desktop version<br><b class="text-sm italic text-primary">Coming Soon</b></span>
+                    </div>
                 </div>
             </div>
-            <!-- Phone Mockup -->
+
+            <!-- Phone Mockup (Zodpovedá tvojmu UI v Compose) -->
             <div class="flex-1 relative">
-                <div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-2xl">
-                    <div class="h-[32px] w-[3px] bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg"></div>
-                    <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
-                    <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
-                    <div class="h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
-                    <div class="rounded-[2rem] overflow-hidden w-full h-full bg-white">
-                        <!-- INSERT YOUR APP SCREENSHOT HERE -->
-                        <img src="https://via.placeholder.com/300x600?text=Intera+Home+Screen" class="w-full h-full object-cover" alt="App Screenshot">
+                <div class="relative mx-auto border-[8px] border-slate-900 rounded-[3rem] h-[640px] w-[320px] shadow-2xl overflow-hidden bg-white">
+                    <!-- Navigačná lišta imitujúca tvoj NavigationBar -->
+                    <div class="absolute bottom-0 w-full h-16 bg-white border-t flex justify-around items-center px-4">
+                        <i class="fas fa-home text-primary"></i>
+                        <i class="fas fa-history text-gray-300"></i>
+                        <i class="fas fa-book text-gray-300"></i>
+                        <i class="fas fa-chart-bar text-gray-300"></i>
                     </div>
+                    <!-- Tvoj screenshot sem -->
+                    <img src="assets/app_main.png" onerror="this.src='https://via.placeholder.com/320x640?text=Intera+Home+Screen'" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Features Section -->
+    <!-- Features (Kopíruje BottomNavItem z tvojho kódu) -->
     <section id="features" class="py-24 px-6 bg-white">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-4">Powerful Features for Personal Growth</h2>
-            <p class="text-slate-500 mb-16 max-w-2xl mx-auto">Everything you need to transform your social life from anxious to confident.</p>
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold mb-4">How Intera helps you</h2>
+                <div class="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
+            </div>
             
-            <div class="grid md:grid-cols-3 gap-12">
-                <!-- Feature 1 -->
-                <div class="p-8 rounded-2xl bg-slate-50 hover:shadow-xl transition duration-300 border border-slate-100">
-                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
-                        🎯
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Home / Quests -->
+                <div class="p-8 m3-card bg-slate-50 border border-slate-100 hover:border-primary/30 transition">
+                    <div class="w-12 h-12 bg-primaryContainer text-primary rounded-2xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fas fa-bullseye"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Adaptive Quests</h3>
-                    <p class="text-slate-600">Gamified social challenges that push your boundaries at your own pace. From small greetings to public speaking.</p>
+                    <h3 class="text-xl font-bold mb-3">Daily Quests</h3>
+                    <p class="text-onSurfaceVariant text-sm">Actionable challenges like "Ask for directions" or "Compliment someone" to build social muscle.</p>
                 </div>
-                <!-- Feature 2 -->
-                <div class="p-8 rounded-2xl bg-slate-50 hover:shadow-xl transition duration-300 border border-slate-100">
-                    <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
-                        📓
+
+                <!-- History -->
+                <div class="p-8 m3-card bg-slate-50 border border-slate-100">
+                    <div class="w-12 h-12 bg-primaryContainer text-primary rounded-2xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Win History</h3>
+                    <p class="text-onSurfaceVariant text-sm">Review your completed quests and see how far you've come from day one.</p>
+                </div>
+
+                <!-- Diary -->
+                <div id="diary" class="p-8 m3-card bg-slate-50 border border-slate-100">
+                    <div class="w-12 h-12 bg-primaryContainer text-primary rounded-2xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fas fa-book"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Reflection Diary</h3>
-                    <p class="text-slate-600">Built-in journal to track your feelings before and after social interactions. Recognize patterns and celebrate wins.</p>
+                    <p class="text-onSurfaceVariant text-sm">The core of growth. Reflect on how you felt <b>before</b> and <b>after</b> each interaction.</p>
                 </div>
-                <!-- Feature 3 -->
-                <div class="p-8 rounded-2xl bg-slate-50 hover:shadow-xl transition duration-300 border border-slate-100">
-                    <div class="w-14 h-14 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
-                        📊
+
+                <!-- Stats -->
+                <div class="p-8 m3-card bg-slate-50 border border-slate-100">
+                    <div class="w-12 h-12 bg-primaryContainer text-primary rounded-2xl flex items-center justify-center mb-6 text-xl">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Growth Analytics</h3>
-                    <p class="text-slate-600">Visual progress tracking. Watch your confidence levels rise as you complete your daily social challenges.</p>
+                    <h3 class="text-xl font-bold mb-3">Growth Stats</h3>
+                    <p class="text-onSurfaceVariant text-sm">Visualize your anxiety levels dropping and your success rate climbing through smart charts.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- App Preview Grid -->
-    <section class="py-20 bg-slate-50 px-6">
+    <!-- Screenshot Showcase (Zasadené do zariadenia) -->
+    <section class="py-20 bg-primaryContainer/20 px-6">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12">A Beautiful Experience</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Mockup Images -->
-                <img src="https://via.placeholder.com/300x600?text=Quest+List" class="rounded-2xl shadow-lg border border-slate-200" alt="Screen 1">
-                <img src="https://via.placeholder.com/300x600?text=Diary+Entry" class="rounded-2xl shadow-lg border border-slate-200" alt="Screen 2">
-                <img src="https://via.placeholder.com/300x600?text=Statistics" class="rounded-2xl shadow-lg border border-slate-200" alt="Screen 3">
-                <img src="https://via.placeholder.com/300x600?text=History" class="rounded-2xl shadow-lg border border-slate-200" alt="Screen 4">
+            <h2 class="text-3xl font-bold text-center mb-16">Designed for Focus</h2>
+            <div class="flex flex-wrap justify-center gap-10">
+                <!-- Screen 1 -->
+                <div class="w-64">
+                    <div class="border-[6px] border-slate-800 rounded-[2.5rem] overflow-hidden shadow-xl mb-4 bg-white">
+                        <img src="assets/screen_quest.png" onerror="this.src='https://via.placeholder.com/300x600?text=Quest+Details'">
+                    </div>
+                    <p class="text-center font-bold text-primary">Quest Details</p>
+                </div>
+                <!-- Screen 2 -->
+                <div class="w-64">
+                    <div class="border-[6px] border-slate-800 rounded-[2.5rem] overflow-hidden shadow-xl mb-4 bg-white">
+                        <img src="assets/screen_diary.png" onerror="this.src='https://via.placeholder.com/300x600?text=Diary+Entry'">
+                    </div>
+                    <p class="text-center font-bold text-primary">Reflective Diary</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact & Dev -->
     <section id="contact" class="py-24 px-6 bg-white">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-6">Get in Touch</h2>
-            <p class="text-slate-600 mb-10 text-lg">Have questions, feedback, or need support? We'd love to hear from you.</p>
+        <div class="max-w-3xl mx-auto text-center bg-primary text-white p-12 m3-card shadow-2xl shadow-primary/20">
+            <h2 class="text-4xl font-bold mb-6">Contact the Developer</h2>
+            <p class="mb-10 text-primaryContainer">Interested in Intera? Let's talk about the future of social health.</p>
             
-            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-                <a href="mailto:support@intera-app.com" class="flex items-center gap-3 px-8 py-4 bg-slate-100 rounded-2xl hover:bg-indigo-50 transition">
-                    <i class="fas fa-envelope text-indigo-600 text-xl"></i>
-                    <span class="font-semibold italic">support@intera-app.com</span>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="mailto:your-email@example.com" class="bg-white text-primary px-8 py-4 m3-button font-bold flex items-center justify-center gap-2 hover:bg-primaryContainer transition">
+                    <i class="fas fa-envelope"></i> Send Email
                 </a>
-                <!-- Socials or Website -->
-                <a href="#" class="flex items-center gap-3 px-8 py-4 bg-slate-100 rounded-2xl hover:bg-indigo-50 transition">
-                    <i class="fab fa-github text-slate-800 text-xl"></i>
-                    <span class="font-semibold">GitHub Source</span>
+                <a href="https://github.com/your-username" target="_blank" class="border-2 border-white text-white px-8 py-4 m3-button font-bold flex items-center justify-center gap-2 hover:bg-white/10 transition">
+                    <i class="fab fa-github"></i> GitHub Profile
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 border-t border-slate-200 text-center text-slate-500">
-        <div class="max-w-7xl mx-auto px-6">
-            <p class="mb-4 font-bold text-slate-800 uppercase tracking-widest text-sm">Intera App</p>
-            <p>&copy; 2025 Intera Project. Built for better human connections.</p>
-        </div>
+    <!-- Footer (Minimalist) -->
+    <footer class="py-12 text-center text-onSurfaceVariant/60 text-sm">
+        <p>© 2025 Intera Project. Made with <i class="fas fa-heart text-red-400 mx-1"></i> for better human connections.</p>
     </footer>
 
 </body>
