@@ -55,80 +55,48 @@
         }
 
         .glass-nav {
-            background: rgba(255, 255, 255, 0.70);
+            background: rgba(255, 255, 255, 0.9);
             border-bottom: 1px solid rgba(12, 74, 110, 0.08);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             transition: box-shadow 220ms ease, background 220ms ease;
         }
 
         .glass-nav.is-scrolled {
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 14px 44px rgba(12, 74, 110, 0.10);
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 10px 30px rgba(12, 74, 110, 0.08);
         }
 
         .brand-mark {
             position: relative;
             isolation: isolate;
-            transition: transform 220ms ease;
-        }
-
-        .brand-mark::before {
-            content: "";
-            position: absolute;
-            inset: -4px;
-            z-index: -1;
-            border-radius: 1.25rem;
-            background: linear-gradient(135deg, rgba(0,180,255,.36), rgba(20,184,166,.20));
-            opacity: 0;
-            transition: opacity 220ms ease;
+            transition: opacity 180ms ease;
         }
 
         .brand-link:hover .brand-mark {
-            transform: translateY(-2px) rotate(-3deg);
-        }
-
-        .brand-link:hover .brand-mark::before {
-            opacity: 1;
+            opacity: 0.82;
         }
 
         .nav-link {
             position: relative;
             display: inline-flex;
             align-items: center;
-            gap: 0.45rem;
-            padding: 0.75rem 0.2rem;
+            padding: 0.5rem 0;
             transition: color 220ms ease;
-        }
-
-        .nav-link::before {
-            content: "";
-            width: 0.42rem;
-            height: 0.42rem;
-            border-radius: 999px;
-            background: var(--brand);
-            opacity: 0;
-            transform: scale(.4);
-            transition: opacity 220ms ease, transform 220ms ease;
         }
 
         .nav-link::after {
             content: "";
             position: absolute;
-            left: 1.05rem;
-            right: 0.2rem;
-            bottom: 0.45rem;
+            left: 0;
+            right: 0;
+            bottom: 0.25rem;
             height: 2px;
             border-radius: 999px;
-            background: linear-gradient(90deg, var(--brand), rgba(20,184,166,.75));
+            background: var(--brand);
             transform: scaleX(0);
-            transform-origin: left;
+            transform-origin: center;
             transition: transform 220ms ease;
-        }
-
-        .nav-link:hover::before {
-            opacity: 1;
-            transform: scale(1);
         }
 
         .nav-link:hover::after {
@@ -138,19 +106,6 @@
         .nav-cta {
             position: relative;
             overflow: hidden;
-        }
-
-        .nav-cta::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, transparent, rgba(255,255,255,.28), transparent);
-            transform: translateX(-120%);
-            transition: transform 520ms ease;
-        }
-
-        .nav-cta:hover::before {
-            transform: translateX(120%);
         }
 
         .footer-shell {
@@ -183,19 +138,9 @@
         }
 
         .hero-shell {
-            background:
-                linear-gradient(135deg, rgba(12, 74, 110, 0.94), rgba(0, 150, 214, 0.92)),
-                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.26), transparent 26rem);
+            background: linear-gradient(135deg, #0C4A6E 0%, #0096D6 100%);
             border-bottom-left-radius: clamp(2.5rem, 8vw, 7rem);
             border-bottom-right-radius: clamp(2.5rem, 8vw, 7rem);
-        }
-
-        .mesh {
-            background-image:
-                linear-gradient(rgba(255,255,255,.10) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px);
-            background-size: 54px 54px;
-            mask-image: linear-gradient(to bottom, black, transparent 72%);
         }
 
         .btn-primary {
@@ -264,6 +209,53 @@
             transform-origin: left;
         }
 
+        .phone-frame {
+            position: relative;
+        }
+
+        .phone-frame::before {
+            content: "";
+            position: absolute;
+            top: 0.9rem;
+            left: 50%;
+            z-index: 2;
+            width: 4.2rem;
+            height: 0.55rem;
+            border-radius: 999px;
+            background: #020617;
+            transform: translateX(-50%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+        }
+
+        .phone-frame::after {
+            content: "";
+            position: absolute;
+            right: -0.22rem;
+            top: 5.5rem;
+            width: 0.22rem;
+            height: 4.5rem;
+            border-radius: 999px;
+            background: #0f172a;
+        }
+
+        .phone-button {
+            position: absolute;
+            left: -0.22rem;
+            width: 0.22rem;
+            border-radius: 999px;
+            background: #0f172a;
+        }
+
+        .phone-button.top {
+            top: 5rem;
+            height: 2.8rem;
+        }
+
+        .phone-button.bottom {
+            top: 8.4rem;
+            height: 3.6rem;
+        }
+
         .reveal {
             opacity: 0;
             transform: translateY(24px);
@@ -304,23 +296,23 @@
 <body class="bg-surface text-ink selection:bg-brand-100 selection:text-brand-900">
 
     <nav class="fixed inset-x-0 top-0 z-50 glass-nav" id="siteNav">
-        <div class="max-w-7xl mx-auto px-5 sm:px-6 h-20 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 h-[72px] flex justify-between items-center">
             <a href="#" class="brand-link flex items-center gap-3 group" aria-label="Intera home">
-                <span class="brand-mark w-11 h-11 bg-white rounded-2xl flex items-center justify-center shadow-lg shadow-brand-900/10 ring-1 ring-brand-100 overflow-hidden">
-                    <img src="assets/obrázok.png" alt="Intera logo" class="w-full h-full object-cover">
+                <span class="brand-mark w-10 h-10 flex items-center justify-center overflow-hidden rounded-xl">
+                    <img src="assets/obr%C3%A1zok.png" alt="Intera logo" class="w-full h-full object-cover">
                 </span>
                 <span>
-                    <span class="block text-2xl font-extrabold tracking-tight text-brand-900 leading-none">Intera</span>
+                    <span class="block text-xl font-extrabold tracking-tight text-brand-900 leading-none">Intera</span>
                 </span>
             </a>
 
-            <div class="hidden md:flex items-center gap-8 text-[13px] font-extrabold uppercase tracking-[0.16em] text-brand-900/60">
+            <div class="hidden md:flex items-center gap-7 text-sm font-bold text-brand-900/65">
                 <a href="#features" class="nav-link hover:text-brand-500">Product</a>
                 <a href="#science" class="nav-link hover:text-brand-500">Science</a>
                 <a href="#contact" class="nav-link hover:text-brand-500">Contact</a>
             </div>
 
-            <a href="#download" class="nav-cta btn-primary inline-flex items-center gap-2 bg-brand-900 text-white px-5 sm:px-7 py-3 rounded-full font-extrabold shadow-xl shadow-brand-900/20 hover:bg-brand-800">
+            <a href="#download" class="nav-cta inline-flex items-center gap-2 border border-brand-900/15 bg-brand-900/5 text-brand-900 px-4 sm:px-5 py-2.5 rounded-full text-sm font-extrabold hover:bg-brand-50 hover:border-brand-500/35 hover:text-brand-500 transition">
                 <span class="relative">Download</span>
                 <i class="fas fa-arrow-down text-xs relative" aria-hidden="true"></i>
             </a>
@@ -328,39 +320,33 @@
     </nav>
 
     <header class="relative pt-28 pb-24 sm:pt-32 lg:pb-32 overflow-hidden hero-shell">
-        <div class="absolute inset-0 mesh opacity-70"></div>
-        <div class="absolute left-8 top-28 hidden lg:block w-24 h-24 border border-white/20 rounded-full"></div>
-        <div class="absolute right-12 bottom-28 hidden lg:block w-36 h-36 border border-white/15 rounded-full"></div>
-
         <div class="relative max-w-7xl mx-auto px-5 sm:px-6 grid lg:grid-cols-[1fr_0.9fr] gap-14 lg:gap-20 items-center">
             <div class="text-center lg:text-left text-white reveal is-visible">
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/14 backdrop-blur-md rounded-full text-xs font-extrabold uppercase tracking-[0.2em] mb-7 ring-1 ring-white/20">
-                    <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
-                    Available for Android
-                </div>
 
                 <h1 class="max-w-4xl text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-7">
-                    Build social confidence with calm, guided practice.
-                </h1>
+                    Communicate calm and confident.</h1>
 
                 <p class="text-lg sm:text-xl text-sky-50/90 mb-9 max-w-2xl leading-relaxed mx-auto lg:mx-0">
-                    Intera turns exposure therapy principles into small daily quests, reflection, and visible progress so growth feels practical instead of overwhelming.
-                </p>
+                    Intera turns exposure therapy principles into small daily tasks, reflection, and visible progress, making growth practical instead of overwhelming.</p>
 
                 <div id="download" class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                    <a href="#" class="transition duration-200 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-white/30 rounded-xl">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="h-14 sm:h-16">
+                    <a href="assets/app-debug.apk" download class="btn-primary inline-flex items-center gap-3 rounded-2xl bg-white px-6 py-4 text-left font-extrabold text-brand-900 shadow-xl shadow-brand-900/20 hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-white/30">
+                        <i class="fab fa-android text-2xl text-emerald-500" aria-hidden="true"></i>
+                        <span class="leading-tight">
+                            <span class="block text-xs uppercase tracking-[0.16em] text-brand-900/55">Download Android</span>
+                            <span class="block text-lg">APK file</span>
+                        </span>
                     </a>
                     <div class="flex items-center gap-3 px-5 py-3 bg-white/12 backdrop-blur-md rounded-2xl border border-white/20 text-left">
                         <i class="fab fa-apple text-2xl" aria-hidden="true"></i>
-                        <span class="text-xs font-bold uppercase opacity-85 leading-tight">Coming Soon<br><b class="text-sm normal-case opacity-100">App Store</b></span>
+                        <span class="text-xs font-bold uppercase opacity-85 leading-tight">Coming soon<br><b class="text-sm normal-case opacity-100">App Store</b></span>
                     </div>
                 </div>
 
                 <div class="mt-12 grid grid-cols-3 gap-4 max-w-xl mx-auto lg:mx-0">
                     <div>
                         <div class="text-3xl font-extrabold">7k+</div>
-                        <div class="text-xs uppercase tracking-[0.18em] text-sky-100/75 font-bold">Quest logs</div>
+                        <div class="text-xs uppercase tracking-[0.18em] text-sky-100/75 font-bold">Task journals</div>
                     </div>
                     <div>
                         <div class="text-3xl font-extrabold">3 min</div>
@@ -374,90 +360,89 @@
             </div>
 
             <div class="relative min-h-[620px] flex items-center justify-center reveal is-visible">
-                <div class="orbit-card absolute left-0 top-20 hidden xl:block bg-white/90 rounded-3xl shadow-soft p-5 w-56 ring-1 ring-white/60">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-500 flex items-center justify-center">
-                            <i class="fas fa-check" aria-hidden="true"></i>
-                        </span>
+                <div class="relative w-[min(78vw,310px)] rounded-[2.8rem] bg-slate-950 p-3 shadow-glow ring-1 ring-white/20 phone">
+                    <div class="relative aspect-[9/19] overflow-hidden rounded-[2.35rem] bg-slate-900 ring-1 ring-white/10">
+                        <img src="assets/homepage.png" alt="Intera app preview" class="absolute inset-0 h-full w-full object-cover">
+                    </div>
+                </div>
+
+                <div class="orbit-card absolute left-0 top-24 hidden sm:block max-w-[13rem] rounded-3xl border border-white/70 bg-white p-4 text-brand-900 shadow-soft">
+                    <div class="mb-2 flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-brand-500">
+                        <i class="fas fa-bolt text-emerald-300" aria-hidden="true"></i>
+                        Today's challenge
+                    </div>
+                    <p class="text-sm font-bold leading-snug text-slate-700">Greet someone first and write down how you felt after the conversation.</p>
+                </div>
+
+                <div class="orbit-card absolute right-0 bottom-28 hidden sm:block w-48 rounded-3xl border border-white/70 bg-white p-4 text-brand-900 shadow-soft">
+                    <div class="mb-3 flex items-center justify-between">
+                        <span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-500">Progress</span>
+                        <span class="text-sm font-extrabold text-emerald-500">82%</span>
+                    </div>
+                    <div class="h-2 overflow-hidden rounded-full bg-slate-100">
+                        <div class="progress-line h-full w-[82%] rounded-full bg-gradient-to-r from-emerald-300 to-sky-300"></div>
+                    </div>
+                </div>
+
+                <div class="orbit-card absolute right-6 top-16 hidden lg:block w-44 rounded-3xl border border-white/70 bg-white p-4 text-brand-900 shadow-soft">
+                    <div class="mb-3 flex items-center gap-2">
+                        <i class="fas fa-fire text-orange-400 text-xl" aria-hidden="true"></i>
                         <div>
-                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Today</p>
-                            <p class="font-extrabold text-brand-900">Quest done</p>
+                            <p class="text-xs font-extrabold uppercase text-brand-500">Day streak</p>
+                            <p class="text-2xl font-extrabold">12</p>
                         </div>
                     </div>
-                    <div class="h-2 rounded-full bg-slate-100 overflow-hidden">
-                        <div class="h-full w-[78%] bg-emerald-400 rounded-full progress-line"></div>
-                    </div>
+                    <p class="text-xs font-bold text-slate-500">Keep going!</p>
                 </div>
 
-                <div class="phone relative w-[305px] sm:w-[335px] h-[640px] rounded-[3.3rem] bg-slate-950 p-3 shadow-[0_40px_110px_rgba(3,33,54,.40)]">
-                    <div class="absolute left-1/2 top-5 -translate-x-1/2 w-24 h-6 bg-slate-950 rounded-full z-20"></div>
-                    <div class="relative h-full rounded-[2.6rem] overflow-hidden bg-gradient-to-b from-sky-50 to-white">
-                        <div class="px-6 pt-12 pb-5 bg-gradient-to-br from-brand-500 to-brand-800 text-white">
-                            <div class="flex justify-between items-center mb-8">
-                                <div>
-                                    <p class="text-xs uppercase tracking-[0.18em] font-bold text-sky-100/80">Good afternoon</p>
-                                    <h2 class="text-2xl font-extrabold">Natalia</h2>
-                                </div>
-                                <span class="w-11 h-11 rounded-2xl bg-white/16 flex items-center justify-center">
-                                    <i class="fas fa-bell" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div class="bg-white/16 rounded-3xl p-5 ring-1 ring-white/20">
-                                <p class="text-sm text-sky-50/85 mb-2">Next micro-challenge</p>
-                                <h3 class="text-xl font-extrabold leading-tight">Ask one friendly follow-up question.</h3>
-                            </div>
-                        </div>
-
-                        <div class="p-5 space-y-4">
-                            <div class="bg-white rounded-3xl p-5 shadow-lg shadow-sky-900/5 ring-1 ring-slate-100">
-                                <div class="flex justify-between items-center mb-4">
-                                    <div>
-                                        <p class="text-xs uppercase tracking-widest text-slate-400 font-extrabold">Anxiety score</p>
-                                        <p class="text-2xl font-extrabold text-brand-900">42%</p>
-                                    </div>
-                                    <span class="text-emerald-500 bg-emerald-50 px-3 py-1 rounded-full text-xs font-extrabold">-12%</span>
-                                </div>
-                                <div class="grid grid-cols-7 gap-2 items-end h-20">
-                                    <span class="rounded-full bg-sky-100 h-8"></span>
-                                    <span class="rounded-full bg-sky-200 h-12"></span>
-                                    <span class="rounded-full bg-brand-500 h-16"></span>
-                                    <span class="rounded-full bg-sky-200 h-10"></span>
-                                    <span class="rounded-full bg-sky-100 h-14"></span>
-                                    <span class="rounded-full bg-brand-500 h-9"></span>
-                                    <span class="rounded-full bg-emerald-300 h-6"></span>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-white rounded-3xl p-4 ring-1 ring-slate-100">
-                                    <i class="fas fa-fire text-orange-400 mb-4" aria-hidden="true"></i>
-                                    <p class="text-2xl font-extrabold text-brand-900">12</p>
-                                    <p class="text-xs font-bold text-slate-400">Day streak</p>
-                                </div>
-                                <div class="bg-white rounded-3xl p-4 ring-1 ring-slate-100">
-                                    <i class="fas fa-star text-amber-400 mb-4" aria-hidden="true"></i>
-                                    <p class="text-2xl font-extrabold text-brand-900">860</p>
-                                    <p class="text-xs font-bold text-slate-400">XP earned</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="absolute bottom-0 inset-x-0 h-20 bg-white/90 backdrop-blur-xl border-t border-slate-100 flex justify-around items-center px-5">
-                            <i class="fas fa-home text-brand-500 text-xl" aria-hidden="true"></i>
-                            <i class="fas fa-compass text-slate-300 text-xl" aria-hidden="true"></i>
-                            <i class="fas fa-book-open text-slate-300 text-xl" aria-hidden="true"></i>
-                            <i class="fas fa-chart-simple text-slate-300 text-xl" aria-hidden="true"></i>
+                <div class="orbit-card absolute right-8 top-72 hidden xl:block w-44 rounded-3xl border border-white/70 bg-white p-4 text-brand-900 shadow-soft">
+                    <div class="mb-3 flex items-center gap-2">
+                        <i class="fas fa-star text-amber-300 text-xl" aria-hidden="true"></i>
+                        <div>
+                            <p class="text-xs font-extrabold uppercase text-brand-500">XP collected</p>
+                            <p class="text-2xl font-extrabold">860</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="orbit-card absolute right-0 bottom-24 hidden xl:block bg-white rounded-3xl shadow-soft p-5 w-60 ring-1 ring-slate-100">
-                    <p class="text-xs uppercase tracking-widest text-slate-400 font-extrabold mb-3">Reflection</p>
-                    <p class="font-bold text-brand-900 leading-snug">"It was easier after the first sentence."</p>
+                    <p class="text-xs font-bold text-slate-500">Daily +30 XP</p>
                 </div>
             </div>
         </div>
     </header>
+
+    <section id="screenshots" class="py-16 px-5 sm:px-6 bg-slate-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-8">
+                <p class="text-sm font-extrabold uppercase tracking-[0.22em] text-brand-500 mb-4">Product preview</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-ink mb-3">Intera mobile preview</h2>
+            </div>
+
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch justify-items-center">
+                <div class="phone-frame relative w-full max-w-[240px] rounded-[2.4rem] bg-slate-950 p-3 shadow-soft ring-1 ring-white/10">
+                    <span class="phone-button top" aria-hidden="true"></span>
+                    <span class="phone-button bottom" aria-hidden="true"></span>
+                    <div class="relative aspect-[9/19] rounded-[2rem] overflow-hidden border border-white/10 bg-slate-900">
+                        <img src="assets/homepage.png" alt="Intera mobile screenshot" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="phone-frame relative w-full max-w-[240px] rounded-[2.4rem] bg-slate-950 p-3 shadow-soft ring-1 ring-white/10">
+                    <span class="phone-button top" aria-hidden="true"></span>
+                    <span class="phone-button bottom" aria-hidden="true"></span>
+                    <div class="relative aspect-[9/19] rounded-[2rem] overflow-hidden border border-white/10 bg-slate-900">
+                        <img src="assets/quest.png" alt="Intera mobile screenshot" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="phone-frame relative w-full max-w-[240px] rounded-[2.4rem] bg-slate-950 p-3 shadow-soft ring-1 ring-white/10">
+                    <span class="phone-button top" aria-hidden="true"></span>
+                    <span class="phone-button bottom" aria-hidden="true"></span>
+                    <div class="relative aspect-[9/19] rounded-[2rem] overflow-hidden border border-white/10 bg-slate-900">
+                        <img src="assets/record.png" alt="Intera mobile screenshot" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <main>
         <section id="features" class="py-24 px-5 sm:px-6 -mt-12 relative z-10">
@@ -468,9 +453,9 @@
                             <div class="w-16 h-16 bg-sky-50 text-brand-500 rounded-2xl flex items-center justify-center text-2xl mb-7 shadow-inner">
                                 <i class="fas fa-location-crosshairs" aria-hidden="true"></i>
                             </div>
-                            <h3 class="text-2xl font-extrabold mb-4 text-brand-900">Social Quests</h3>
+                            <h3 class="text-2xl font-extrabold mb-4 text-brand-900">Social tasks</h3>
                             <p class="text-slate-500 leading-relaxed">
-                                Curated micro-challenges help you practice real social moments at a pace that stays manageable.
+                                Selected micro-challenges help you practice real social moments at a pace that stays manageable.
                             </p>
                         </div>
                     </article>
@@ -480,9 +465,9 @@
                             <div class="w-16 h-16 bg-teal-50 text-teal-500 rounded-2xl flex items-center justify-center text-2xl mb-7 shadow-inner">
                                 <i class="fas fa-pen-nib" aria-hidden="true"></i>
                             </div>
-                            <h3 class="text-2xl font-extrabold mb-4 text-brand-900">Reflective Diary</h3>
+                            <h3 class="text-2xl font-extrabold mb-4 text-brand-900">Reflection journal</h3>
                             <p class="text-slate-500 leading-relaxed">
-                                Capture before-and-after anxiety levels, thoughts, and wins so emotions become patterns you can understand.
+                                Track anxiety levels before and after, thoughts, and small wins so emotions become patterns you can understand.
                             </p>
                         </div>
                     </article>
@@ -492,12 +477,58 @@
                             <div class="w-16 h-16 bg-indigo-50 text-indigo-500 rounded-2xl flex items-center justify-center text-2xl mb-7 shadow-inner">
                                 <i class="fas fa-chart-pie" aria-hidden="true"></i>
                             </div>
-                            <h3 class="text-2xl font-extrabold mb-4 text-brand-900">Growth Stats</h3>
+                            <h3 class="text-2xl font-extrabold mb-4 text-brand-900">Growth statistics</h3>
                             <p class="text-slate-500 leading-relaxed">
                                 Progress charts make confidence visible, with streaks and milestones that reward steady practice.
                             </p>
                         </div>
                     </article>
+                </div>
+
+                <div class="mt-12 rounded-[2rem] bg-white/82 p-6 sm:p-8 shadow-soft ring-1 ring-brand-900/5 reveal">
+                    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        <div class="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
+                            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-brand-600">
+                                <i class="fas fa-list-check" aria-hidden="true"></i>
+                            </span>
+                            <span class="font-extrabold text-brand-900">Daily social challenges</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
+                            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
+                                <i class="fas fa-pen-to-square" aria-hidden="true"></i>
+                            </span>
+                            <span class="font-extrabold text-brand-900">Guided reflection journal</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
+                            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                            </span>
+                            <span class="font-extrabold text-brand-900">Progress statistics</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
+                            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
+                                <i class="fas fa-fire" aria-hidden="true"></i>
+                            </span>
+                            <span class="font-extrabold text-brand-900">Streaks and XP</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
+                            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-rose-100 text-rose-600">
+                                <i class="fas fa-heart-pulse" aria-hidden="true"></i>
+                            </span>
+                            <span class="font-extrabold text-brand-900">Anxiety before and after</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
+                            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-teal-100 text-teal-600">
+                                <i class="fas fa-lock" aria-hidden="true"></i>
+                            </span>
+                            <span class="font-extrabold text-brand-900">Private personal space</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -505,10 +536,13 @@
         <section id="science" class="py-24 bg-white px-5 sm:px-6">
             <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
                 <div class="reveal">
-                    <p class="text-sm font-extrabold uppercase tracking-[0.22em] text-brand-500 mb-4">Evidence-led design</p>
+                    <p class="text-sm font-extrabold uppercase tracking-[0.22em] text-brand-500 mb-4">Evidence-guided design</p>
                     <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-brand-900 mb-6">Rooted in practical behavioral science.</h2>
                     <p class="text-lg text-slate-600 leading-relaxed">
-                        Intera is designed around gradual exposure, reflection, and repeatable routines. The experience feels friendly, but the structure is built for consistent behavior change.
+                        Intera is designed around gradual exposure, reflection, and repeatable routines. The experience feels friendly, while the structure supports consistent behavior change.
+                    </p>
+                    <p class="mt-5 text-sm font-bold leading-relaxed text-slate-500">
+                        It is not a replacement for professional therapy. It is a self-guided support tool for practicing small, manageable social steps.
                     </p>
                 </div>
 
@@ -516,18 +550,60 @@
                     <div class="rounded-3xl bg-slate-50 p-6 border border-slate-100">
                         <i class="fas fa-layer-group text-3xl text-brand-500 mb-8" aria-hidden="true"></i>
                         <h3 class="font-extrabold text-brand-900 mb-2">Gradual steps</h3>
-                        <p class="text-sm text-slate-500 leading-relaxed">Small challenges prevent overwhelm and support momentum.</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">Small challenges reduce overwhelm and build strength.</p>
                     </div>
                     <div class="rounded-3xl bg-slate-50 p-6 border border-slate-100">
                         <i class="fas fa-brain text-3xl text-teal-500 mb-8" aria-hidden="true"></i>
                         <h3 class="font-extrabold text-brand-900 mb-2">Reflection loop</h3>
-                        <p class="text-sm text-slate-500 leading-relaxed">Journaling turns each attempt into useful feedback.</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">Journaling turns every attempt into useful feedback.</p>
                     </div>
                     <div class="rounded-3xl bg-slate-50 p-6 border border-slate-100">
                         <i class="fas fa-chart-line text-3xl text-indigo-500 mb-8" aria-hidden="true"></i>
                         <h3 class="font-extrabold text-brand-900 mb-2">Visible progress</h3>
-                        <p class="text-sm text-slate-500 leading-relaxed">Stats make invisible confidence gains easier to trust.</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">Statistics make invisible confidence gains easier to trust.</p>
                     </div>
+                </div>
+
+                <div class="reveal lg:col-span-2 grid gap-5 md:grid-cols-2">
+                    <article class="rounded-3xl border border-slate-100 bg-slate-50 p-6">
+                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-100 text-brand-600">
+                            <i class="fas fa-stairs" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="mb-2 text-xl font-extrabold text-brand-900">Exposure in small doses</h3>
+                        <p class="text-sm leading-relaxed text-slate-500">
+                            Avoiding social situations can keep fear alive. Intera encourages gentle, repeated practice so the brain can learn that many moments are safer than they feel.
+                        </p>
+                    </article>
+
+                    <article class="rounded-3xl border border-slate-100 bg-slate-50 p-6">
+                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
+                            <i class="fas fa-repeat" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="mb-2 text-xl font-extrabold text-brand-900">Reflection after action</h3>
+                        <p class="text-sm leading-relaxed text-slate-500">
+                            Writing down what happened before and after a challenge helps separate predictions from reality and makes progress easier to notice.
+                        </p>
+                    </article>
+
+                    <article class="rounded-3xl border border-slate-100 bg-slate-50 p-6">
+                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-seedling" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="mb-2 text-xl font-extrabold text-brand-900">Consistency over intensity</h3>
+                        <p class="text-sm leading-relaxed text-slate-500">
+                            Small daily actions are easier to repeat than big leaps. Streaks, XP, and milestones turn practice into a steady routine.
+                        </p>
+                    </article>
+
+                    <article class="rounded-3xl border border-slate-100 bg-slate-50 p-6">
+                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-100 text-rose-600">
+                            <i class="fas fa-heart-pulse" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="mb-2 text-xl font-extrabold text-brand-900">Tracking emotion patterns</h3>
+                        <p class="text-sm leading-relaxed text-slate-500">
+                            Before-and-after anxiety ratings help reveal patterns: which situations feel hardest, which ones improve, and where confidence is growing.
+                        </p>
+                    </article>
                 </div>
             </div>
         </section>
@@ -540,14 +616,14 @@
 
                 <div class="relative">
                     <p class="text-sm font-extrabold uppercase tracking-[0.22em] text-sky-100/70 mb-4">Get in touch</p>
-                    <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">Connect with the developer</h2>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">Contact the developer</h2>
                     <p class="text-sky-50/75 mb-10 text-lg leading-relaxed max-w-2xl mx-auto">
                         For feedback, partnerships, school projects, press, or investment conversations, send a message directly.
                     </p>
 
                     <a href="mailto:kontinovanatalia@gmail.com" class="btn-primary inline-flex items-center gap-3 px-8 py-4 bg-white text-brand-900 rounded-full font-extrabold hover:bg-sky-50">
                         <i class="fas fa-envelope" aria-hidden="true"></i>
-                        Email Me
+                        Send me an email
                     </a>
                 </div>
             </div>
@@ -560,7 +636,7 @@
                 <div>
                     <a href="#" class="brand-link inline-flex items-center gap-3 mb-5" aria-label="Intera home">
                         <span class="brand-mark w-12 h-12 bg-white rounded-2xl flex items-center justify-center ring-1 ring-slate-200 overflow-hidden shadow-lg shadow-brand-900/5">
-                            <img src="assets/obrázok.png" alt="Intera logo" class="w-full h-full object-cover">
+                            <img src="assets/obr%C3%A1zok.png" alt="Intera logo" class="w-full h-full object-cover">
                         </span>
                         <span>
                             <span class="block font-extrabold text-2xl text-brand-900 leading-none">Intera</span>
@@ -568,7 +644,7 @@
                         </span>
                     </a>
                     <p class="text-slate-500 leading-relaxed max-w-sm">
-                        A calm, gamified companion for practicing social confidence through small quests, reflection, and visible growth.
+                        A calm, game-inspired guide for practicing social confidence through small tasks, reflection, and visible growth.
                     </p>
                 </div>
 
@@ -640,3 +716,5 @@
     </script>
 </body>
 </html>
+
+
